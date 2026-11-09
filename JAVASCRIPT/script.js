@@ -13,7 +13,7 @@ function mostrar(cat){
     .filter(p => cat==='todos' || p.c===cat)
     .map(p => {
       const imagem = p.foto
-        ? `<img src="../img/${p.foto}" alt="${p.n}">`
+        ? `<img src="../IMG/${p.foto}" alt="${p.n}">`
         : `<svg viewBox="0 0 100 100" fill="none" stroke="#d4af37" stroke-width="2" stroke-linejoin="round">${icones[p.i]}</svg>`;
       return `
       <article class="card">

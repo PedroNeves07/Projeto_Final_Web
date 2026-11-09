@@ -9,12 +9,12 @@ const icones = {
 
 // id: número único | c: feminino ou masculino | foto: nome do arquivo na pasta img (opcional)
 const produtos = [
-  {id:1, n:'Vestido Dourado Noite',      c:'feminino',  p:189.9, i:'vestido', foto:''},
-  {id:2, n:'Blusa Seda Preta',           c:'feminino',  p:119.9, i:'blusa',   foto:''},
-  {id:3, n:'Saia Midi Plissada',         c:'feminino',  p:139.9, i:'saia',    foto:''},
+  {id:1, n:'VestidoDourado Noite',      c:'feminino',  p:189.9, i:'vestido', foto:'vestido-dourado-noite.png'},
+  {id:2, n:'Blusa Seda Preta',           c:'feminino',  p:119.9, i:'blusa',   foto:'blusa-seda-preta.png'},
+  {id:3, n:'Saia Midi Plissada',         c:'feminino',  p:139.9, i:'saia',    foto:'saia-midi-plissada.png'},
   {id:4, n:'Calça Alfaiataria Feminina', c:'feminino',  p:169.9, i:'calca',   foto:''},
-  {id:5, n:'Camisa Social Preta',        c:'masculino', p:149.9, i:'camisa',  foto:''},
-  {id:6, n:'Jaqueta Couro Black',        c:'masculino', p:289.9, i:'jaqueta', foto:''},
-  {id:7, n:'Calça Slim Grafite',         c:'masculino', p:159.9, i:'calca',   foto:''},
-  {id:8, n:'Camisa Linho Areia',         c:'masculino', p:129.9, i:'camisa',  foto:''}
+  {id:5, n:'Camisa Social Preta',        c:'masculino', p:149.9, i:'camisa',  foto:'camisa-social-preta.png'},
+  {id:6, n:'Jaqueta Couro Black',        c:'masculino', p:289.9, i:'jaqueta', foto:'jaqueta-couro-black.png'},
+  {id:7, n:'Calça Slim Grafite',         c:'masculino', p:159.9, i:'calca',   foto:'calca-slim-grafite.png'},
+  {id:8, n:'Camisa Linho Areia',         c:'masculino', p:129.9, i:'camisa',  foto:'camisa-linho-areia.png'}
 ];
