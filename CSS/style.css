@@ -19,8 +19,10 @@ header{position:sticky;top:env(safe-area-inset-top,0px);z-index:50;background:rg
 .logo{font-family:var(--serif);font-size:1.7rem;font-weight:700;letter-spacing:.02em}
 nav{display:flex;gap:26px;font-size:.95rem}
 nav a:hover{color:var(--ouro)}
-.cart{background:none;border:1px solid var(--ouro);color:var(--ouro);padding:8px 16px;font:inherit;cursor:pointer;border-radius:2px}
+.cart{display:inline-block;background:none;border:1px solid var(--ouro);color:var(--ouro);padding:8px 16px;font:inherit;cursor:pointer;border-radius:2px}
 .cart:hover{background:var(--ouro);color:#000}
+.voltar-inicio{position:fixed;right:22px;bottom:22px;z-index:45;background:var(--ouro);color:#000;padding:10px 16px;border:1px solid var(--ouro-claro);border-radius:24px;font:inherit;font-weight:500;cursor:pointer;box-shadow:0 4px 16px rgba(0,0,0,.45);transition:background .2s,transform .2s}
+.voltar-inicio:hover{background:var(--ouro-claro);transform:translateY(-3px)}
 
 .hero{max-width:1100px;margin:auto;padding:90px 20px 80px;display:grid;grid-template-columns:1.2fr .8fr;gap:50px;align-items:center}
 .hero h1{font-family:var(--serif);font-size:clamp(2.8rem,7vw,5.4rem);line-height:1;margin:0 0 22px;font-weight:700}
@@ -53,6 +55,48 @@ h2{font-family:var(--serif);font-size:clamp(2rem,4.5vw,3rem);margin:0 0 8px;font
 .preco{color:var(--ouro);font-weight:500;font-size:1.1rem;margin-top:auto;padding-top:8px}
 .info .btn{margin-top:12px;padding:11px;width:100%}
 
+.checkout{min-height:65vh}
+.titulo-pagina{font-family:var(--serif);font-size:clamp(2.2rem,5vw,3.4rem);margin:14px 0 4px}
+.voltar-loja{display:inline-block;color:var(--ouro);margin-bottom:14px}
+.voltar-loja:hover{text-decoration:underline}
+.checkout-layout{display:grid;grid-template-columns:minmax(0,1.6fr) minmax(260px,.8fr);gap:28px;align-items:start}
+.lista-sacola,.resumo-pedido,.form-pagamento fieldset{background:var(--grafite);border:1px solid var(--borda)}
+.lista-sacola{padding:0 20px}
+.sacola-vazia{padding:18px 0;color:var(--texto-suave)}
+.item-sacola{display:grid;grid-template-columns:100px minmax(0,1fr) auto;gap:18px;align-items:center;padding:18px 0;border-bottom:1px solid var(--borda)}
+.item-sacola:last-child{border-bottom:0}
+.item-sacola-foto{aspect-ratio:1;background:#000;border:1px solid var(--borda)}
+.item-sacola-foto img{width:100%;height:100%;object-fit:cover;display:block}
+.item-sacola-foto svg{width:100%;height:100%;padding:20px}
+.item-sacola-info small,.item-sacola-info>span{color:var(--texto-suave)}
+.item-sacola-info h3{font-family:var(--serif);font-size:1.3rem;margin:0}
+.item-sacola-total{color:var(--ouro);white-space:nowrap}
+.controles-qtd{display:flex;align-items:center;gap:10px;margin-top:8px}
+.controles-qtd button{background:none;border:1px solid var(--borda);color:var(--marfim);font:inherit;min-width:32px;min-height:32px;cursor:pointer}
+.controles-qtd .remover-item{border:0;color:var(--texto-suave);text-decoration:underline;margin-left:4px}
+.resumo-pedido{padding:22px;position:sticky;top:100px}
+.resumo-pedido h2{font-size:1.8rem;margin-bottom:18px}
+.linha-total{display:flex;justify-content:space-between;gap:16px;padding:14px 0;border-top:1px solid var(--borda)}
+.linha-total strong{color:var(--ouro);white-space:nowrap}
+.aviso-frete{color:var(--texto-suave);font-size:.9rem}
+.botao-largo{display:block;width:100%;text-align:center;margin-top:18px}
+.resumo-itens{list-style:none;padding:0;margin:0 0 18px}
+.resumo-itens li{display:flex;justify-content:space-between;gap:12px;padding:8px 0;border-bottom:1px solid var(--borda)}
+.resumo-itens li strong{white-space:nowrap}
+.form-pagamento{display:grid;gap:18px}
+.form-pagamento fieldset{padding:20px;min-width:0}
+.form-pagamento legend{font-family:var(--serif);font-size:1.55rem;padding:0 8px}
+.form-pagamento>fieldset>label:not(.opcao-pagamento){display:block;margin:10px 0 4px}
+.form-pagamento input:not([type=radio]){display:block}
+.campos-duplos{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.opcao-pagamento{display:flex;align-items:center;gap:10px;padding:12px 0;border-bottom:1px solid var(--borda);cursor:pointer}
+.opcao-pagamento:last-of-type{border-bottom:0}
+.opcao-pagamento input{accent-color:var(--ouro)}
+.opcao-pagamento span{margin-left:auto;color:var(--texto-suave);font-size:.85rem}
+.confirmacao-pedido{margin-top:24px;padding:28px;border:1px solid var(--ouro);background:var(--grafite)}
+.confirmacao-pedido h2{color:var(--ouro)}
+[hidden]{display:none!important}
+
 .sobre{display:grid;grid-template-columns:1fr 1fr;gap:50px;align-items:center;border-top:1px solid var(--borda)}
 .sobre p{color:var(--texto-suave);max-width:52ch}
 .numeros{display:grid;grid-template-columns:1fr 1fr;gap:20px}
@@ -74,5 +118,13 @@ footer{border-top:1px solid var(--borda);text-align:center;padding:30px 20px;col
   .hero,.sobre{grid-template-columns:1fr;padding-top:50px}
   .moldura{max-width:300px}
   .btn.vazado{margin:12px 0 0}
+  .checkout-layout{grid-template-columns:1fr}
+  .resumo-pedido{position:static}
+}
+@media (max-width:480px){
+  .item-sacola{grid-template-columns:76px minmax(0,1fr);gap:12px}
+  .item-sacola-total{grid-column:2}
+  .lista-sacola{padding:0 12px}
+  .campos-duplos{grid-template-columns:1fr}
 }
 @media (prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}

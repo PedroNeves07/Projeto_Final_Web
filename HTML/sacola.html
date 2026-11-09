@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Sacola – Closet da Jack</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,700;1,500&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../CSS/style.css">
+</head>
+<body>
+
+<header>
+  <div class="bar">
+    <a href="index.html" class="logo ouro">Closet da Jack</a>
+    <nav>
+      <a href="index.html#inicio">Início</a>
+      <a href="feminino.html">Feminino</a>
+      <a href="masculino.html">Masculino</a>
+      <a href="index.html#sobre">Sobre</a>
+      <a href="index.html#contato">Contato</a>
+    </nav>
+    <a class="cart" href="sacola.html" aria-label="Ver sacola">Sacola (<span id="qtd">0</span>)</a>
+  </div>
+</header>
+
+<main>
+  <section class="checkout">
+    <a class="voltar-loja" href="index.html#colecao">← Continuar comprando</a>
+    <h1 class="titulo-pagina">Sua sacola</h1>
+    <p class="sub">Confira as peças e as quantidades antes de continuar.</p>
+    <div class="checkout-layout">
+      <div id="itensSacola" class="lista-sacola" aria-live="polite"></div>
+      <aside class="resumo-pedido">
+        <h2>Resumo do pedido</h2>
+        <div class="linha-total"><span>Total dos produtos</span><strong id="valorSubtotal">R$ 0,00</strong></div>
+        <p class="aviso-frete">Frete a combinar após a confirmação do endereço.</p>
+        <a class="btn botao-largo" id="irPagamento" href="pagamento.html">Ir para pagamento</a>
+      </aside>
+    </div>
+  </section>
+</main>
+
+<footer>© 2026 Closet da Jack. Todos os direitos reservados.</footer>
+<button class="voltar-inicio" id="btnVoltar" type="button">← Voltar</button>
+<div id="aviso" role="status"></div>
+<script src="../JAVASCRIPT/produtos.js"></script>
+<script src="../JAVASCRIPT/script.js"></script>
+</body>
+</html>
