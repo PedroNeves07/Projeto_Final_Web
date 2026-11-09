@@ -46,6 +46,7 @@ h2{font-family:var(--serif);font-size:clamp(2rem,4.5vw,3rem);margin:0 0 8px;font
 .card{background:var(--grafite);border:1px solid var(--borda);display:flex;flex-direction:column}
 .foto{aspect-ratio:1/1;display:grid;place-items:center;border-bottom:1px solid var(--borda)}
 .foto svg{width:46%;height:auto}
+.foto img{width:100%;height:100%;object-fit:cover;display:block}
 .info{padding:16px;display:flex;flex-direction:column;gap:4px;flex:1}
 .info small{color:var(--texto-suave)}
 .info h3{font-family:var(--serif);font-size:1.35rem;margin:0}
@@ -68,7 +69,8 @@ footer{border-top:1px solid var(--borda);text-align:center;padding:30px 20px;col
 #aviso.show{opacity:1;transform:translate(-50%,0)}
 
 @media (max-width:760px){
-  nav{display:none}
+  .bar{flex-wrap:wrap;justify-content:center}
+  nav{gap:16px;font-size:.9rem}
   .hero,.sobre{grid-template-columns:1fr;padding-top:50px}
   .moldura{max-width:300px}
   .btn.vazado{margin:12px 0 0}
