@@ -149,7 +149,7 @@ function renderizarResumoPagamento(){
   const grupos = agruparSacola();
   const subtotal = sacola.reduce((s,p)=>s+p.p,0);
   if (!grupos.length) {
-    resumoPagamento.innerHTML = '<p>Sua sacola está vazia. <a href="index.html#colecao">Volte à coleção</a> para escolher suas peças.</p>';
+    resumoPagamento.innerHTML = '<p>Sua sacola está vazia. <a href="colecao.html">Volte à coleção</a> para escolher suas peças.</p>';
     return;
   }
   resumoPagamento.innerHTML = `
@@ -160,7 +160,7 @@ function renderizarResumoPagamento(){
     <p class="aviso-frete">Frete a combinar após a confirmação do endereço.</p>`;
 }
 
-// Filtros (só existem na página inicial)
+// Filtros (só existem na página da coleção)
 const filtros = document.getElementById('filtros');
 if (filtros) {
   filtros.addEventListener('click',e=>{
@@ -170,7 +170,7 @@ if (filtros) {
   });
 }
 
-// Formulário (só existe na página inicial)
+// Formulário de contato (só existe na página de contato)
 const form = document.getElementById('form');
 if (form) {
   form.addEventListener('submit',e=>{
