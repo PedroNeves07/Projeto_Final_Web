@@ -9,12 +9,12 @@ const icones = {
 
 // id: número único | c: feminino ou masculino | foto: nome do arquivo na pasta img (opcional)
 const produtos = [
-  {id:1, n:'VestidoDourado Noite',      c:'feminino',  p:189.9, i:'vestido', foto:'vestido-dourado-noite.png'},
-  {id:2, n:'Blusa Seda Preta',           c:'feminino',  p:119.9, i:'blusa',   foto:'blusa-seda-preta.png'},
-  {id:3, n:'Saia Midi Plissada',         c:'feminino',  p:139.9, i:'saia',    foto:'saia-midi-plissada.png'},
-  {id:4, n:'Calça Alfaiataria Feminina', c:'feminino',  p:169.9, i:'calca',   foto:''},
-  {id:5, n:'Camisa Social Preta',        c:'masculino', p:149.9, i:'camisa',  foto:'camisa-social-preta.png'},
-  {id:6, n:'Jaqueta Couro Black',        c:'masculino', p:289.9, i:'jaqueta', foto:'jaqueta-couro-black.png'},
-  {id:7, n:'Calça Slim Grafite',         c:'masculino', p:159.9, i:'calca',   foto:'calca-slim-grafite.png'},
-  {id:8, n:'Camisa Linho Areia',         c:'masculino', p:129.9, i:'camisa',  foto:'camisa-linho-areia.png'}
+  {id:1, n:'Vestido Dourado Noite',      c:'feminino',  p:189.9, i:'vestido', foto:'vestido-dourado-noite.png', d:'Versão elegante com caimento fluido, ideal para eventos e noite fora.', t:['P','M','G','GG']},
+  {id:2, n:'Blusa Seda Preta',           c:'feminino',  p:119.9, i:'blusa',   foto:'blusa-seda-preta.png', d:'Textura sofisticada e acabamento leve para looks de trabalho e noite.', t:['P','M','G','GG']},
+  {id:3, n:'Saia Midi Plissada',         c:'feminino',  p:139.9, i:'saia',    foto:'saia-midi-plissada.png', d:'Modelo delicado com movimento e volume suave para compor visuais femininos.', t:['36','38','40','42','44']},
+  {id:4, n:'Calça Alfaiataria Feminina', c:'feminino',  p:169.9, i:'calca',   foto:'', d:'Silhueta clean e impecável para o dia a dia com acabamento premium.', t:['36','38','40','42','44']},
+  {id:5, n:'Camisa Social Preta',        c:'masculino', p:149.9, i:'camisa',  foto:'camisa-social-preta.png', d:'Camisa estruturada em tecido refinado, pronta para ocasiões formais e elegantes.', t:['P','M','G','GG']},
+  {id:6, n:'Jaqueta Couro Black',        c:'masculino', p:289.9, i:'jaqueta', foto:'jaqueta-couro-black.png', d:'Modelagem premium, com visual impactante e uma presença marcante no look.', t:['P','M','G','GG']},
+  {id:7, n:'Calça Slim Grafite',         c:'masculino', p:159.9, i:'calca',   foto:'calca-slim-grafite.png', d:'Corte slim moderno, confortável e versátil para rotina e dias mais especiais.', t:['36','38','40','42','44']},
+  {id:8, n:'Camisa Linho Areia',         c:'masculino', p:129.9, i:'camisa',  foto:'camisa-linho-areia.png', d:'Tecelagem leve e elegante com o toque natural do linho para um visual sofisticado.', t:['P','M','G','GG']}
 ];

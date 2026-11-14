@@ -4,6 +4,7 @@ const moeda = valor => valor.toLocaleString('pt-BR', {style:'currency', currency
 const escapar = valor => String(valor).replace(/[&<>"']/g, caractere => ({
   '&':'&amp;', '<':'&lt;', '>':'&gt;', '"':'&quot;', "'":'&#39;'
 }[caractere]));
+const obterProdutoPorId = id => produtosPorId.get(Number(id));
 
 const FRETE = 24.9;
 const FRETE_GRATIS = 300;
@@ -145,7 +146,7 @@ function mostrarProdutos(categoria = 'todos'){
         <small>${produto.c === 'feminino' ? 'Feminino' : 'Masculino'}</small>
         <h3>${escapar(produto.n)}</h3>
         <span class="preco">${moeda(produto.p)}</span>
-        <button class="btn" type="button" data-acao="detalhe" data-id="${produto.id}">Escolher tamanho</button>
+        <a class="btn" href="produto.html?id=${produto.id}">Ver detalhes</a>
       </div>
     </article>`).join('');
 }
@@ -451,6 +452,103 @@ function inicializarCatalogo(){
   }
 }
 
+function inicializarPaginaProduto(){
+  const container = document.getElementById('produtoDetalhe');
+  if (!container) return;
+
+  const params = new URLSearchParams(window.location.search);
+  const produto = obterProdutoPorId(params.get('id'));
+  if (!produto) {
+    container.innerHTML = `
+      <div class="produto-vazio">
+        <h1 class="titulo-pagina">Peça não encontrada</h1>
+        <p class="sub">Essa peça não está disponível no momento.</p>
+        <a class="btn" href="colecao.html">Voltar para coleção</a>
+      </div>`;
+    return;
+  }
+
+  const tamanhos = produto.t || (produto.i === 'calca' ? ['36','38','40','42'] : ['P','M','G','GG']);
+  let tamanhoSelecionado = tamanhos[0];
+  let quantidadeSelecionada = 1;
+
+  const renderizar = () => {
+    container.innerHTML = `
+      <div class="produto-layout">
+        <div class="det-foto det-foto-grande">${obterImagem(produto)}</div>
+        <div class="det-info produto-info">
+          <small class="eyebrow">${produto.c === 'feminino' ? 'Feminino' : 'Masculino'}</small>
+          <h1 class="titulo-pagina produto-titulo">${escapar(produto.n)}</h1>
+          <div class="produto-meta">
+            <span class="preco produto-preco">${moeda(produto.p)}</span>
+            <span class="badge-estoque">Em estoque</span>
+          </div>
+          <p class="produto-descricao">${escapar(produto.d || 'Peça selecionada com design refinado e acabamento premium.')}</p>
+
+          <div class="lista-caracteristicas">
+            <span>Entrega em 3 a 5 dias</span>
+            <span>Troca em até 7 dias</span>
+            <span>Pagamento demonstrativo</span>
+          </div>
+
+          <div class="selecao-produto">
+            <div class="rot">Tamanho</div>
+            <div class="tams">
+              ${tamanhos.map(tamanho => `<button class="tam ${tamanho === tamanhoSelecionado ? 'on' : ''}" type="button" data-tamanho="${escapar(tamanho)}">${escapar(tamanho)}</button>`).join('')}
+            </div>
+          </div>
+
+          <div class="produto-acoes">
+            <div class="qtd" aria-label="Quantidade do produto">
+              <button type="button" data-acao="quantidade-pagina" data-delta="-1" aria-label="Diminuir quantidade">−</button>
+              <span>${quantidadeSelecionada}</span>
+              <button type="button" data-acao="quantidade-pagina" data-delta="1" aria-label="Aumentar quantidade">+</button>
+            </div>
+            <button class="btn" type="button" data-acao="adicionar-produto">Adicionar à sacola</button>
+          </div>
+        </div>
+      </div>
+      <div class="produto-lateral">
+        <div class="info-card">
+          <h2>Detalhes da peça</h2>
+          <ul>
+            <li>Modelagem premium e confortável.</li>
+            <li>Material com acabamento sofisticado.</li>
+            <li>Versátil para looks do dia a dia e ocasiões especiais.</li>
+          </ul>
+        </div>
+      </div>`;
+
+    document.querySelectorAll('[data-tamanho]').forEach(botao => {
+      botao.addEventListener('click', () => {
+        tamanhoSelecionado = botao.dataset.tamanho;
+        renderizar();
+      });
+    });
+
+    const botaoAdicionar = document.querySelector('[data-acao="adicionar-produto"]');
+    if (botaoAdicionar) {
+      botaoAdicionar.addEventListener('click', () => {
+        const itemExistente = sacola.find(item => item.id === produto.id && item.t === tamanhoSelecionado);
+        if (itemExistente) itemExistente.q = Math.min(10, itemExistente.q + quantidadeSelecionada);
+        else sacola.push({id: produto.id, t: tamanhoSelecionado, q: quantidadeSelecionada});
+        salvarSacola();
+        mostrarAviso(`${escapar(produto.n)} adicionada à sacola.`);
+      });
+    }
+
+    document.querySelectorAll('[data-acao="quantidade-pagina"]').forEach(botao => {
+      botao.addEventListener('click', () => {
+        const delta = Number(botao.dataset.delta);
+        quantidadeSelecionada = Math.max(1, Math.min(10, quantidadeSelecionada + delta));
+        renderizar();
+      });
+    });
+  };
+
+  renderizar();
+}
+
 const filtros = $('#filtros');
 if (filtros) {
   filtros.addEventListener('click', evento => {
@@ -503,6 +601,7 @@ if (botaoVoltar) {
 }
 
 inicializarCatalogo();
+inicializarPaginaProduto();
 mostrarProdutos(grade?.dataset.categoria || 'todos');
 atualizarContador();
 renderizarDrawer();
