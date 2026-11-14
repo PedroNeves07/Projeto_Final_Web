@@ -34,6 +34,30 @@
       <button data-cat="feminino" aria-pressed="false">Feminino</button>
       <button data-cat="masculino" aria-pressed="false">Masculino</button>
     </div>
+    <div class="toolbar-listagem" aria-label="Buscar e ordenar produtos">
+      <label class="campo-pesquisa" for="buscaProduto">
+        <span>Buscar</span>
+        <input id="buscaProduto" type="search" placeholder="Buscar peça..." autocomplete="off">
+      </label>
+      <label class="campo-select" for="filtroPreco">
+        <span>Preço</span>
+        <select id="filtroPreco">
+          <option value="todas">Todos os preços</option>
+          <option value="ate-150">Até R$ 150</option>
+          <option value="150-250">R$ 150 a R$ 250</option>
+          <option value="acima-250">Acima de R$ 250</option>
+        </select>
+      </label>
+      <label class="campo-select" for="ordemProdutos">
+        <span>Ordenar</span>
+        <select id="ordemProdutos">
+          <option value="relevancia">Mais relevantes</option>
+          <option value="menor-preco">Menor preço</option>
+          <option value="maior-preco">Maior preço</option>
+          <option value="alfabetica">A-Z</option>
+        </select>
+      </label>
+    </div>
     <div class="grade" id="grade"></div>
   </section>
 </main>

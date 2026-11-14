@@ -44,9 +44,15 @@ h2{font-family:var(--serif);font-size:clamp(2rem,4.5vw,3rem);margin:0 0 8px;font
 .filtros button[aria-pressed="true"],.filtros button:hover{border-color:var(--ouro);color:var(--ouro)}
 .filtros button[aria-pressed="true"]{background:var(--ouro);color:#000}
 
+.toolbar-listagem{display:grid;grid-template-columns:1.4fr 0.8fr 0.8fr;gap:14px;align-items:end;margin-bottom:28px;padding:18px;border:1px solid var(--borda);background:rgba(20,17,11,.9)}
+.campo-pesquisa,.campo-select{display:grid;gap:8px;color:var(--texto-suave);font-size:.82rem;text-transform:uppercase;letter-spacing:.06em}
+.campo-pesquisa input,.campo-select select{width:100%;padding:12px 14px;border:1px solid var(--borda);background:var(--preto);color:var(--marfim);font:inherit;border-radius:2px}
+.campo-pesquisa input:focus,.campo-select select:focus{border-color:var(--ouro);outline:none}
+
 .grade{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:22px}
+.lista-vazia{grid-column:1/-1;padding:32px 20px;border:1px dashed var(--borda);text-align:center;color:var(--texto-suave);background:rgba(20,17,11,.7)}
 .card{background:var(--grafite);border:1px solid var(--borda);display:flex;flex-direction:column}
-.foto{aspect-ratio:1/1;display:grid;place-items:center;border-bottom:1px solid var(--borda)}
+.foto{width:100%;aspect-ratio:1/1;display:grid;place-items:center;padding:0;background:var(--grafite);color:inherit;border:0;border-bottom:1px solid var(--borda);font:inherit;cursor:pointer}
 .foto svg{width:46%;height:auto}
 .foto img{width:100%;height:100%;object-fit:cover;display:block}
 .info{padding:16px;display:flex;flex-direction:column;gap:4px;flex:1}
@@ -128,3 +134,81 @@ footer{border-top:1px solid var(--borda);text-align:center;padding:30px 20px;col
   .campos-duplos{grid-template-columns:1fr}
 }
 @media (prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
+/* ===== Sacola, tamanhos e login ===== */
+.acoes{display:flex;gap:10px;align-items:center}
+.overlay{position:fixed;inset:0;background:rgba(0,0,0,.75);opacity:0;pointer-events:none;transition:opacity .25s;z-index:80}
+.overlay.ativo{opacity:1;pointer-events:auto}
+body.trava{overflow:hidden}
+.painel{position:fixed;z-index:90;background:var(--grafite);border:1px solid var(--borda);color:var(--marfim);visibility:hidden;opacity:0;transition:.28s}
+.painel.aberto{visibility:visible;opacity:1}
+.painel .btn.vazado{margin:0}
+.modal{left:50%;top:50%;width:min(860px,94vw);max-height:90vh;overflow:auto;padding:30px;transform:translate(-50%,-46%)}
+.modal.aberto{transform:translate(-50%,-50%)}
+.modal.estreito{width:min(430px,94vw)}
+.drawer{top:0;right:0;height:100%;width:min(440px,100%);display:flex;flex-direction:column;transform:translateX(40px)}
+.drawer.aberto{transform:none}
+.fechar{position:absolute;top:10px;right:14px;background:none;border:0;color:var(--ouro);font-size:2rem;line-height:1;cursor:pointer}
+
+/* Janela do produto */
+.det{display:grid;grid-template-columns:1fr 1fr;gap:30px;align-items:start}
+.det-foto{aspect-ratio:1/1;border:1px solid var(--borda);display:grid;place-items:center;overflow:hidden}
+.det-foto img{width:100%;height:100%;object-fit:cover;display:block}
+.det-foto svg{width:46%}
+.det-info{display:flex;flex-direction:column;gap:10px}
+.det-info h2{margin:0;font-size:2rem}
+.det-info .preco{margin:0;padding:0;font-size:1.5rem}
+.rot{margin-top:6px;font-weight:500}
+.tams{display:flex;gap:8px;flex-wrap:wrap}
+.tam{min-width:50px;padding:10px 14px;background:none;border:1px solid var(--borda);color:var(--marfim);font:inherit;cursor:pointer}
+.tam:hover{border-color:var(--ouro)}
+.tam.on{background:var(--ouro);border-color:var(--ouro);color:#000}
+.qtd{display:inline-flex;align-items:center;border:1px solid var(--borda);width:max-content}
+.qtd button{width:38px;height:38px;background:none;border:0;color:var(--ouro);font-size:1.2rem;cursor:pointer}
+.qtd span{min-width:34px;text-align:center}
+.erro{color:#ff8a8a;min-height:1.2em;margin:0;font-size:.9rem}
+
+/* Sacola */
+.painel-topo{display:flex;align-items:center;justify-content:space-between;padding:18px 22px;border-bottom:1px solid var(--borda)}
+.painel-topo h3{margin:0;font-family:var(--serif);font-size:1.7rem}
+.painel-topo .fechar{position:static}
+.corpo{flex:1;overflow:auto;padding:16px 22px}
+.vazio{padding:50px 22px;text-align:center;color:var(--texto-suave)}
+.frete-bar{margin-bottom:14px;font-size:.9rem;color:var(--texto-suave)}
+.frete-bar p{margin:0}
+.barra{height:6px;background:var(--borda);margin-top:8px}
+.barra i{display:block;height:100%;background:var(--ouro);transition:width .3s}
+.item{display:grid;grid-template-columns:76px 1fr auto;gap:14px;padding:14px 0;border-bottom:1px solid var(--borda);align-items:start}
+.item small{display:block;color:var(--texto-suave)}
+.mini-foto{width:76px;height:76px;border:1px solid var(--borda);display:grid;place-items:center;overflow:hidden}
+.mini-foto img{width:100%;height:100%;object-fit:cover;display:block}
+.mini-foto svg{width:50%}
+.linha{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-top:8px}
+.x{background:none;border:0;color:var(--texto-suave);font-size:1.4rem;cursor:pointer}
+.x:hover{color:var(--ouro)}
+.link{background:none;border:0;padding:0;color:var(--ouro);font:inherit;text-decoration:underline;cursor:pointer}
+.corpo .link{margin-top:14px}
+.resumo{padding:18px 22px;border-top:1px solid var(--ouro);display:grid;gap:8px;background:var(--preto)}
+.resumo div{display:flex;justify-content:space-between}
+.resumo .total{font-size:1.25rem;font-weight:500;color:var(--ouro)}
+.resumo .btn{width:100%}
+
+/* Login e cadastro */
+.painel label{display:grid;gap:6px;margin-bottom:14px;font-size:.95rem}
+.painel h2{margin-bottom:16px}
+.abas{display:flex;margin:12px 0 22px;border-bottom:1px solid var(--borda)}
+.abas button{flex:1;background:none;border:0;border-bottom:2px solid transparent;color:var(--texto-suave);padding:12px;font:inherit;cursor:pointer}
+.abas button.on{color:var(--ouro);border-color:var(--ouro)}
+.troca{text-align:center;margin:16px 0 0;color:var(--texto-suave)}
+.painel form .btn{width:100%}
+.perfil{display:flex;gap:16px;align-items:center;margin:20px 0}
+.perfil small{display:block;color:var(--texto-suave)}
+.avatar{width:56px;height:56px;border-radius:50%;background:var(--ouro);color:#000;display:grid;place-items:center;font-family:var(--serif);font-size:1.8rem;font-weight:700}
+.ok{text-align:center;padding:10px 0}
+.check{width:70px;height:70px;border-radius:50%;border:2px solid var(--ouro);color:var(--ouro);display:grid;place-items:center;font-size:2rem;margin:0 auto 16px}
+
+@media (max-width:760px){
+  .det{grid-template-columns:1fr}
+  .modal{padding:22px}
+  .acoes{gap:6px}
+  .cart{padding:8px 10px;font-size:.9rem}
+}
